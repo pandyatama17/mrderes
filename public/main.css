@@ -1,0 +1,300 @@
+.xxl {
+  margin-left: auto;
+  left: auto;
+  right: auto;
+}
+#data-table-contact > tbody > tr > td:not(:first)
+{
+  cursor: default!important;
+}
+.sidebar .sidebar-content .sidebar-menu ul li.first {
+    margin-left: -1.8rem;
+    padding-left: 1.8rem;
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    background-color: #fff;
+    /* box-shadow: 0 0 8px 0 #f0f0f0; */
+    color: black
+}
+@media only screen and (min-width: 1600px) {
+  .row .col.xxl {
+    width: 20%;
+  }
+}
+table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before {
+  top: 20px!important;
+}
+.btn-block {
+  width: 100%;
+}
+.desk-container{
+    border-radius: 10px;
+}
+.swal2-container .select-wrapper{
+    display: none !important;
+    }
+/* .input-field input:read-only{
+    background-color: rgb(228, 227, 227);
+} */
+.select2-results__group{
+  font-weight: 900!important;
+  background-color: #eeeeee;
+}
+.input-field input:read-only:not(.timepicker) {
+    background-color: rgb(228, 227, 227);
+}
+.pulse {
+    background-color: #33691e;
+    animation-name: color;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    color: white;
+    transition: .5s;
+}
+@keyframes color {
+    0% {
+      background-color: #7cb342;
+      color: black;
+    }
+    25% {
+      background-color: #689f38;
+      color: white;
+    }
+    50% {
+      background-color: #558b2f;
+      color: white;
+    }
+    75% {
+        background-color: #689f38;
+        color: white;
+    }
+    100% {
+        background-color: #7cb342;
+        color: black;
+    }
+}
+@keyframes color2 {
+    0% {
+      background-color: #7cb342;
+      color: black;
+    }
+    25% {
+      background-color: #689f38;
+      color: white;
+    }
+    50% {
+      background-color: #558b2f;
+      color: white;
+    }
+    75% {
+        background-color: #689f38;
+        color: white;
+    }
+    100% {
+        background-color: #7cb342;
+        color: black;
+    }
+}
+@media screen and (min-width: 780px) {
+    .gradient-45deg-red
+    {
+        /* background: linear-gradient(to right,#b71c1c , #f18119)!important; */
+        background: linear-gradient(90deg, rgba(183,28,28,1) 0%, rgba(183,28,28,1) 47%, rgba(241,129,25,1) 100%) !important;
+    }
+}
+@media screen and (max-width: 540px) {
+    .gradient-45deg-red
+    {
+        /* background: rgba(183,28,28,1) !important; */
+        background: rgb(154,21,21) !important;
+        background: linear-gradient(90deg, rgba(154,21,21,1) 0%, rgba(199,58,23,1) 73%, rgba(241,122,25,1) 100%)!important;
+    }
+    .dropdown-content {
+        max-height: 250px;
+    }
+}
+@media screen and (min-width: 780px) {
+    .desk-container {
+        padding: 6px!important;
+    }
+    .desk-text{
+        padding-left: 2px;
+    }
+
+}
+@media screen and (max-width: 540px) {
+    .desk-container {
+        padding:10px!important;
+        padding-left: 10px!important;
+    }
+    .desk-text{
+        padding-left: 3px;
+    }
+}
+.sticky-col {
+    position: -webkit-sticky;
+    position: sticky;
+    background-color: white;
+  }
+/* For Tablets */
+@media screen and (min-width: 540px) and (max-width: 780px) {
+    .desk-container {
+        padding:10px!important;
+        padding-left:20px!important;
+    }
+}
+.main-loader {
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    display: flex;
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  /* .table-wrapper {
+    width: 100%;
+  }
+  thead{
+      width:80% !important;
+  }
+  tbody {
+    display:block;
+    width: 80%;
+    left: 10% !important;
+    overflow-x:auto;
+  }
+  thead, tbody tr {
+    display:table;
+    table-layout:fixed;
+  }
+  td{
+      width: 50px;
+      padding-left: 5px !important;
+  }
+  thead {
+    width: calc( 100% - 1em )
+  }
+  table {
+    width:100%;
+  }
+  tbody>tr
+  {
+    display:block;
+    float:left;
+    width: 1200px; 
+    } */
+    .table-scroll {
+        position:relative;
+        max-width:100%;
+        margin:auto;
+        overflow:hidden;
+    }
+    .table-wrap {
+        width:100%;
+        overflow:auto;
+    }
+    .table-scroll table {
+        width:100%;
+        margin:auto;
+        border-collapse:separate;
+        border-spacing:0;
+    }
+    .table-scroll th, .table-scroll td {
+        padding:5px 10px;
+        background:#fff;
+        white-space:nowrap;
+        vertical-align:top;
+        /* border-radius: 0; */
+    }
+    .tscroll-header{
+        border-radius: 0;
+        border-color: black;
+    }
+    /*.table-scroll thead, .table-scroll tfoot {
+        background:#f9f9f9;
+    }
+    .clone {
+        position:absolute;
+        top:0;
+        left:0;
+        pointer-events:none;
+    }
+    .clone th, .clone td {
+        visibility:hidden
+    }
+    .clone td, .clone th {
+        border-color:transparent
+    }
+    .clone tbody th {
+        visibility:visible;
+    }
+    .clone .fixed-side {
+        visibility:visible;
+        border-radius: 0;
+    }
+    .br-0
+    {
+        border-radius: 0;
+    }
+    .clone thead, .clone tfoot{background:transparent;} */
+
+    .table-scroll {
+        position: relative;
+        width:100%;
+        z-index: 1;
+        margin: auto;
+        overflow: auto;
+        height: 400px;
+      }
+      .table-scroll table {
+        width: 100%;
+        min-width: 1280px;
+        margin: auto;
+        /* border-collapse: separate;
+        border-spacing: 0; */
+      }
+      .table-wrap {
+        position: relative;
+      }
+      .table-scroll th,
+      .table-scroll td {
+        padding: 5px 10px;
+        background: #fff;
+        vertical-align: top;
+      }
+      .table-scroll thead th {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        z-index: 3;
+      }
+      /* safari and ios need the tfoot itself to be position:sticky also */
+      .table-scroll tfoot,
+      .table-scroll tfoot th,
+      .table-scroll tfoot td {
+        position: -webkit-sticky;
+        position: sticky;
+        bottom: 0;
+       
+        z-index:4;
+      }
+      
+      .main-table th:first-child {
+        position: -webkit-sticky;
+        position: sticky;
+        left: 0;
+        z-index: 2;
+        background: #ccc;
+      }
+      .main-table thead th:first-child,
+      .main-table tfoot th:first-child {
+        z-index: 5;
+      }
+      .main-table thead td{
+          border : 1px solid black !important;
+      }

@@ -12,6 +12,7 @@ use Mail;
 use \App\Mail\TicketRequestMailer;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Session;
 
 class ReservationController extends Controller
 {
@@ -102,14 +103,19 @@ class ReservationController extends Controller
                         'reject' => route('reject_ticket',$ticket->id),
                     ]
                 ];
-                $mail = Mail::to('pandyatama17@gmail.com');
+                $mail = Mail::to('nova@doku.com');
                 if (Auth::user()->cc_id) {
-                    $mail->cc('ypinandito@gmail.com');
+                    $mail->cc('bookingsystem@firoshal.com');
                 }
                 
-                $mail->send(new TicketRequestMailer($mailVariables));
+                try {
+                    $mail->send(new TicketRequestMailer($mailVariables));
+                    $message = ['type'=> 'success', 'body' => 'Ticket sucsesfully requested','title'=>'Success'];
+                } catch (\Throwable $th) {
+                    $message = ['type'=> 'warning', 'body' => 'an error occured! please notify your approver to accept your request manually through the web application','title'=>'Oops..'];
+                }
             }
-            $message = ['type'=> 'success', 'body' => 'Ticket sucsesfully requested','title'=>'Success'];
+            
 
         } catch (\Throwable $th) {
             $message = ['type'=> 'error', 'body' => 'Ticket request failed, error '.$th->getMessage(),'title'=>'Failed'];
@@ -121,10 +127,15 @@ class ReservationController extends Controller
     {
         $ticket = Ticket::find($ticket_id);
 
-        $ticket->status = 1;
+        if ($ticket) {
+            $ticket->status = 1;
 
-        $ticket->save();
-        $message = ['type'=> 'success', 'body' => 'Ticket approved','title'=>'Success'];
+            $ticket->save();
+            $message = ['type'=> 'success', 'body' => 'Ticket approved','title'=>'Success'];
+        }
+        else{
+            $message = ['type'=> 'error', 'body' => 'Ticket unavailable or has been removed!','title'=>'error'];
+        }
 
         return redirect()->route('ticket')->with('message',$message);
     }
@@ -405,10 +416,15 @@ class ReservationController extends Controller
     {
         $ticket = Ticket::find($ticket_id);
 
-        $ticket->status = 3;
+        if ($ticket) {
+            $ticket->status = 3;
 
-        $ticket->save();
-        $message = ['type'=> 'success', 'body' => 'Ticket rejected','title'=>'Success'];
+            $ticket->save();
+            $message = ['type'=> 'success', 'body' => 'Ticket rejected','title'=>'Success'];
+        }
+        else{
+            $message = ['type'=> 'error', 'body' => 'Ticket unavailable or has been removed!','title'=>'error'];
+        }
 
         return redirect()->route('ticket')->with('message',$message);
     }

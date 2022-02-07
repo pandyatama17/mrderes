@@ -24,7 +24,7 @@ $demoTickets = (object) [['date' => \Carbon\Carbon::now(),'type'=>'M', 'status' 
                     @if (count($tickets) > 0)
                         @foreach ($tickets as $ticket)
                             {{-- @if ($ticket->status != 2 || ($ticket->status == 2 && \Carbon\Carbon::parse($ticket->datetime)->addHours($ticket->duration))->gte(\Carbon\Carbon::now())) --}}
-                            @if ($ticket->status != 2)
+                            @if ($ticket->status < 2)
                                 <div class="col s12 m6 l6">
                                     <div class="card 
                                         @if ($ticket->status === 0)

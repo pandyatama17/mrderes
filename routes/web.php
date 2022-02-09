@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\UserController;
 use GuzzleHttp\Psr7\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Session;
 
 /*
@@ -72,3 +73,8 @@ Route::get('/ajax/getCrumbs/{page}',[CrumbsController::class,'getCrumbs'])->name
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/debug/getDesksByTicket/{ticket_id}',[DesksController::class,'getDesksByTicket']);
+
+Route::get('/console/migrate',function(){
+    Artisan::call('migrate');
+    return "php artisan migrate success!";
+});

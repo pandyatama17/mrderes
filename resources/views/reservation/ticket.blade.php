@@ -12,7 +12,7 @@ $demoTickets = (object) [['date' => \Carbon\Carbon::now(),'type'=>'M', 'status' 
 </div>
 <div class="row">
     <div class="col s12 m6 l5">
-        <ul class="collapsible @if (count($tickets) > 0) mx-0 px-0 @endif">
+        <ul class="collapsible @if (count(\App\Models\Ticket::where('status','<',2)->where('user_id',Auth::user()->id)->get()) > 0) mx-0 px-0 @endif">
             <li @if (!$agent->isMobile()) class="active" @endif >
                 <div class="collapsible-header gradient-45deg-purple-deep-orange white-text">
                     My Tickets &nbsp;
@@ -20,8 +20,8 @@ $demoTickets = (object) [['date' => \Carbon\Carbon::now(),'type'=>'M', 'status' 
                         <span class="right mt-2" style="font-size: 6pt;vertical-align: bottom;">(click to expand)</span>
                     @endif
                 </div>
-                <div class="collapsible-body white @if (count($tickets) > 0) mx-0 px-0 @endif">
-                    @if (count($tickets) > 0)
+                <div class="collapsible-body white @if (count(\App\Models\Ticket::where('status','<',2)->where('user_id',Auth::user()->id)->get()) > 0) mx-0 px-0 @endif">
+                    @if (count(\App\Models\Ticket::where('status','<',2)->where('user_id',Auth::user()->id)->get()) > 0)
                         @foreach ($tickets as $ticket)
                             {{-- @if ($ticket->status != 2 || ($ticket->status == 2 && \Carbon\Carbon::parse($ticket->datetime)->addHours($ticket->duration))->gte(\Carbon\Carbon::now())) --}}
                             @if ($ticket->status < 2)

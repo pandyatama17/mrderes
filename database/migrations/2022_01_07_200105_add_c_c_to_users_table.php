@@ -13,8 +13,9 @@ class AddCCToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::rename('teams', 'divisions');
+        // Schema::rename('teams', 'divisions');
         Schema::table('users', function (Blueprint $table) {
+            $table->string('role')->after('name')->default('STAFF');
             $table->integer('approver_id')->after('role')->nullable();
             $table->integer('cc_id')->after('approver_id')->nullable();
         });

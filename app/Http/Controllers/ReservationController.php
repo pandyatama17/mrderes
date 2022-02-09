@@ -108,15 +108,15 @@ class ReservationController extends Controller
                     $mail->cc('bookingsystem@firoshal.com');
                 }
                 
-                try {
-                    $mail->send(new TicketRequestMailer($mailVariables));
-                    $message = ['type'=> 'success', 'body' => 'Ticket sucsesfully requested','title'=>'Success'];
-                } catch (\Throwable $th) {
-                    $message = ['type'=> 'warning', 'body' => 'an error occured! please notify your approver to accept your request manually through the web application','title'=>'Oops..'];
-                }
+                $mail->send(new TicketRequestMailer($mailVariables));
+                $message = ['type'=> 'success', 'body' => 'Ticket sucsesfully requested','title'=>'Success'];
+                // try {
+                //     $mail->send(new TicketRequestMailer($mailVariables));
+                //     $message = ['type'=> 'success', 'body' => 'Ticket sucsesfully requested','title'=>'Success'];
+                // } catch (\Throwable $th) {
+                //     $message = ['type'=> 'warning', 'body' => 'an error occured! please notify your approver to accept your request manually through the web application','title'=>'Oops..'];
+                // }
             }
-            
-
         } catch (\Throwable $th) {
             $message = ['type'=> 'error', 'body' => 'Ticket request failed, error '.$th->getMessage(),'title'=>'Failed'];
         }

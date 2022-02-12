@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ConsoleController;
 use App\Http\Controllers\CrumbsController;
 use App\Http\Controllers\DesksController;
 use Illuminate\Support\Facades\Route;
@@ -74,7 +75,5 @@ Route::get('/ajax/getCrumbs/{page}',[CrumbsController::class,'getCrumbs'])->name
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/debug/getDesksByTicket/{ticket_id}',[DesksController::class,'getDesksByTicket']);
 
-Route::get('/console/migrate',function(){
-    Artisan::call('migrate');
-    return "php artisan migrate success!";
-});
+Route::get('/console/migrate',[ConsoleController::class, 'migrate']);
+Route::get('/console/clear-views', [ConsoleController::class, 'clearViews']);

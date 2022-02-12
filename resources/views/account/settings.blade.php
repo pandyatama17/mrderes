@@ -73,7 +73,6 @@
                   <button type="submit" class="btn indigo waves-effect waves-light mr-2">
                     Save changes
                   </button>
-                  <button type="button" class="btn btn-light-pink waves-effect waves-light mb-1">Cancel</button>
                 </div>
               </div>
             </form>

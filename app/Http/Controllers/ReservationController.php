@@ -120,6 +120,9 @@ class ReservationController extends Controller
                 //     $message = ['type'=> 'warning', 'body' => 'an error occured! please notify your approver to accept your request manually through the web application','title'=>'Oops..'];
                 // }
             }
+            else{
+                $message = ['type'=> 'success', 'body' => 'Ticket sucsesfully created','title'=>'Success'];
+            }
         } catch (\Throwable $th) {
             $message = ['type'=> 'error', 'body' => 'Ticket request failed, error '.$th->getMessage(),'title'=>'Failed'];
         }

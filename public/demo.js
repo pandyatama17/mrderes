@@ -342,6 +342,52 @@ $(document).ready(function(){
             }
         });
     });
+    $(".resetUserPasswordTrigger").on('click', function (event) {
+        event.preventDefault();
+        Swal.fire({
+            title: 'Confirm password reset for '+$(this).data('name'),
+            text: 'please type "CONFIRM" to proceed',
+            input: 'text',
+            inputAttributes: {
+                autocapitalize: 'off'
+            },
+            confirmButtonText: 'Confirm Action',
+            preConfirm: (confirmation) => {
+                if (confirmation == 'CONFIRM') {
+                    $.ajax({
+                        type: "GET",
+                        url: assetsUrl+'admin/user/resetPassword/'+$(this).data('id'),
+                        dataType: "JSON",
+                        beforeSend: function(){
+                            $(".main-loader").show();
+                        },
+                        success: function (response) {
+                            // return response;
+                            $(".main-loader").hide();
+                            Swal.fire({
+                                title : response.title,
+                                text : response.body,
+                                icon : response.type
+                            }).then(() => {
+                                $(".main-loader").show();
+                                window.location = response.redirect
+                            });        
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            $(".main-loader").hide();
+                            Swal.showValidationmessage(xhr.responseText);
+                            console.log(thrownError);
+                        }
+                    });
+                }
+                else
+                {
+                    $(".main-loader").hide();
+                    Swal.fire('Failed!','Please type "CONFIRM" with uppercased letters!','error');
+                }
+            }
+        });
+    });
     $('#adminUserListTrigger').on('click', function () {
         $("#content-form").hide();
         $("#content-list").show();

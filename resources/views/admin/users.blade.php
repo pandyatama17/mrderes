@@ -97,7 +97,7 @@
                                 <td>{{ $user->approver_id ? $user->approver : "-" }}</td>
                                 <td>{{ $user->cc_id ? $user->cc : "-" }}</td>
                                 <td>
-                                    <a class="light-blue-text text-darken-4 left editUserTrigger"
+                                    <a href="#" class="light-blue-text text-darken-4 left editUserTrigger"
                                         href="{{ $user->id }}"
                                         data-id= "{{ $user->id }}"
                                         data-approver_id= "{{ $user->approver_id }}"
@@ -112,7 +112,13 @@
                                         <i class="material-icons left light-blue-text text-darken-4">edit</i>Edit Information
                                     </a>
                                     <br>
-                                    <a class="{{ ($user->email_verified_at ? "orange-text" : "green-text") }} text-darken-4 left toggleUserStatusTrigger"
+                                    <a href="#" class="purple-text text-darken-4 left resetUserPasswordTrigger"
+                                        data-id="{{ $user->id }}"
+                                        data-name="{{ $user->name }}"
+                                        > 
+                                        <i class="material-icons left purple-text text-darken-4">password</i>Reset Password 
+                                    </a>
+                                    <a href="#" class="{{ ($user->email_verified_at ? "orange-text" : "green-text") }} text-darken-4 left toggleUserStatusTrigger"
                                         data-id="{{ $user->id }}"
                                         data-name="{{ $user->name }}"
                                     >

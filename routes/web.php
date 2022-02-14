@@ -55,6 +55,7 @@ Route::post('/admin/reservation/submit', [AdminController::class,'storeReservati
 Route::post('/account/settings/changePassword', [UserController::class,'changePassword'])->name('account_change_password');
 Route::post('/account/settings/update', [UserController::class,'update'])->name('account_update');
 Route::get('/admin/user/changeStatus/{id}', [AdminController::class,'toggleUserStatus'])->name('admin_change_user_status');
+Route::get('/admin/user/resetPassword/{id}', [AdminController::class,'resetPassword'])->name('admin_reset_user_password');
 
 Route::get('/ajax/getDesksByTicket/{ticket_id}',[DesksController::class,'getDesksByTicket'])->name('getDesksByTicket');
 Route::post('/ajax/getDesksForAdmin',[AdminController::class,'getDesks'])->name('getDesksForAdmin');

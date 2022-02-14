@@ -280,4 +280,19 @@ class AdminController extends Controller
 
        return view('admin.users_content')->with('users',$users);
     }
+
+    public function resetPassword($user_id)
+    {
+        $user = User::find($user_id);
+
+        $user->password =  Hash::make('Doku12#');
+
+        try {
+            $user->save();
+            $message = ['type'=> 'success', 'body' => 'password for user '.$user->name.' sucesfully reset! ','title'=> ' Successful!','redirect' => route('show_users')];
+        } catch (\Throwable $th) {
+            $message = ['type'=> 'success', 'body' => $th->getMessage(),'title'=>'Failed to reset User '.$user->name.' password!','redirect' => route('show_users')];
+        }
+        echo json_encode($message);
+    }
 }

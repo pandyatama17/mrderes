@@ -206,13 +206,13 @@
                                     <label for="">Access</label>
                                     <p>
                                     <label>
-                                        <input type="checkbox" checked readonly name='zones[]' value="1"/>
+                                        <input type="checkbox" checked readonly name='zones[]' value="2"/>
                                         <span>Meeting Room</span>
                                     </label>
                                     </p>
                                     <p>
                                     <label>
-                                        <input type="checkbox" name='zones[]' value="2"/>
+                                        <input type="checkbox" name='zones[]' value="1"/>
                                         <span>Hot Desk</span>
                                     </label>
                                     </p>
@@ -223,7 +223,6 @@
                                     <button type="submit" class="btn indigo waves-effect waves-light mr-2">
                                       Submit
                                     </button>
-                                    <button type="button" class="btn btn-light-pink waves-effect waves-light mb-1">Cancel</button>
                                 </div>
                             </div>
                         </form>

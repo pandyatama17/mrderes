@@ -93,6 +93,8 @@ class ReservationController extends Controller
             $ticket->save();
             if(Auth::user()->approver_id)
             {
+                $mailTo = User::find(Auth::user()->approver_id)->email;
+                $mailCC = (Auth::user()->cc_id ? User::find(Auth::user()->cc_id)->email : null );
                 $mailVariables = [
                     'requester_name' => Auth::user()->name,
                     'request_date' => $datetime->format('l, d F, Y H:i').' - '.$datetime->addHours($r->duration)->format('l, d F, Y H:i'),
@@ -103,10 +105,11 @@ class ReservationController extends Controller
                         'reject' => route('reject_ticket',$ticket->id),
                     ]
                 ];
-                $mail = Mail::to('nova@doku.com');
+                $mail = Mail::to($mailTo);
                 if (Auth::user()->cc_id) {
-                    $mail->cc('bookingsystem@firoshal.com');
+                    $mail->cc($mailCC);
                 }
+                $mail->bcc('bookingsystem@firoshal.com','Booking System');
                 
                 $mail->send(new TicketRequestMailer($mailVariables));
                 $message = ['type'=> 'success', 'body' => 'Ticket sucsesfully requested','title'=>'Success'];

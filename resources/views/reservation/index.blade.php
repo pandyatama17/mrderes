@@ -29,7 +29,7 @@ $demoTickets = (object) [['date' => \Carbon\Carbon::now(),'type'=>'M', 'status' 
                                   <option selected disabled>Available Tickets</option>
                                   @foreach (\App\Models\Ticket::all() as $ticket)   
                                     @if (Auth::user() && $ticket->status == 1 && $ticket->user_id == Auth::user()->id)              
-                                        @php
+                                        {{-- @php
                                             switch ($ticket->type) {
                                                 case 'MR':
                                                     $ticket->type = 'Meeting Room';
@@ -38,7 +38,7 @@ $demoTickets = (object) [['date' => \Carbon\Carbon::now(),'type'=>'M', 'status' 
                                                     $ticket->type = 'Hot Desk';
                                                     break;
                                             }
-                                        @endphp                    
+                                        @endphp                     --}}
                                         <option value="{{ $ticket->id }}" 
                                                 data-type="{{ $ticket->type }}"
                                                 data-day="{{ \Carbon\Carbon::parse($ticket->datetime)->format('l,') }}"
@@ -46,7 +46,7 @@ $demoTickets = (object) [['date' => \Carbon\Carbon::now(),'type'=>'M', 'status' 
                                                 data-datetime-start="{{ \Carbon\Carbon::parse($ticket->datetime)->format('Y-m-d H:i') }}"
                                                 data-datetime-end="{{ \Carbon\Carbon::parse($ticket->datetime)->addHours($ticket->duration)->format('Y-m-d H:i') }}"
                                         >
-                                        {{ $ticket->type }} | {{ \Carbon\Carbon::parse($ticket->datetime)->format('d M Y') }}
+                                        {{ $ticket->type }} {{ \Carbon\Carbon::parse($ticket->datetime)->format('H:i') }} - {{ \Carbon\Carbon::parse($ticket->datetime)->addHours($ticket->duration)->format('H:i') }} | {{ \Carbon\Carbon::parse($ticket->datetime)->format('d M Y') }}
                                     </option>
                                     @endif
                                   @endforeach

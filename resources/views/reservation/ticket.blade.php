@@ -52,6 +52,8 @@ $demoTickets = (object) [['date' => \Carbon\Carbon::now(),'type'=>'M', 'status' 
                                                 <br>
                                                 {{ \Carbon\Carbon::parse($ticket->datetime)->format('d F Y') }}
                                                 <br>
+                                                {{ \Carbon\Carbon::parse($ticket->datetime)->format('H:i') }} - {{ \Carbon\Carbon::parse($ticket->datetime)->addHours($ticket->duration)->format('H:i') }}
+                                                <br>
                                                 <div class="clearfix"></div>
                                                 @switch($ticket->status)
                                                 @case(0)
